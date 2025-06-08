@@ -4,69 +4,78 @@
 
 @layer base {
   :root {
-    --background: 255 240 207;
-    --foreground: 124 24 1;
+    --background: 42 100 90;
+    --foreground: 11 98 25;
 
-    --card: 255 255 255;
-    --card-foreground: 124 24 1;
+    --card: 0 0 100;
+    --card-foreground: 11 98 25;
 
-    --popover: 255 255 255;
-    --popover-foreground: 124 24 1;
+    --popover: 0 0 100;
+    --popover-foreground: 11 98 25;
 
-    --primary: 124 24 1;
-    --primary-foreground: 255 240 207;
+    --primary: 11 98 25;
+    --primary-foreground: 42 100 90;
 
-    --secondary: 255 240 207;
-    --secondary-foreground: 124 24 1;
+    --secondary: 42 100 90;
+    --secondary-foreground: 11 98 25;
 
-    --muted: 255 240 207;
-    --muted-foreground: 100 100 100;
+    --muted: 42 100 90;
+    --muted-foreground: 0 0 39;
 
-    --accent: 124 24 1;
-    --accent-foreground: 255 240 207;
+    --accent: 11 98 25;
+    --accent-foreground: 42 100 90;
 
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 240 207;
+    --destructive: 0 84 60;
+    --destructive-foreground: 42 100 90;
 
-    --border: 124 24 1;
-    --input: 255 240 207;
-    --ring: 124 24 1;
+    --border: 11 98 25;
+    --input: 42 100 90;
+    --ring: 11 98 25;
 
     --radius: 0.75rem;
 
     /* Enhanced Cultural Colors using primary and secondary */
-    --bengali-red: 124 24 1;
-    --bengali-gold: 234 179 8;
-    --bengali-cream: 255 240 207;
-    --bengali-blue: 30 58 138;
-    --bengali-orange: 217 119 6;
-    --bengali-brown: 124 24 1;
-    --bengali-dark-brown: 80 15 0;
-    --bengali-light-brown: 200 150 120;
+    --bengali-red: 11 98 25;
+    --bengali-gold: 46 93 47;
+    --bengali-cream: 42 100 90;
+    --bengali-blue: 231 63 33;
+    --bengali-orange: 33 94 44;
+    --bengali-brown: 11 98 25;
+    --bengali-dark-brown: 13 100 16;
+    --bengali-light-brown: 30 41 63;
   }
 
   .dark {
-    --background: 124 24 1;
-    --foreground: 255 240 207;
-    --card: 100 20 0;
-    --card-foreground: 255 240 207;
-    --popover: 100 20 0;
-    --popover-foreground: 255 240 207;
-    --primary: 255 240 207;
-    --primary-foreground: 124 24 1;
-    --secondary: 100 20 0;
-    --secondary-foreground: 255 240 207;
-    --muted: 100 20 0;
-    --muted-foreground: 180 180 180;
-    --accent: 100 20 0;
-    --accent-foreground: 255 240 207;
-    --destructive: 127 29 29;
-    --destructive-foreground: 255 240 207;
-    --border: 100 20 0;
-    --input: 100 20 0;
-    --ring: 255 240 207;
+    --background: 11 98 25;
+    --foreground: 42 100 90;
+
+    --card: 15 100 20;
+    --card-foreground: 42 100 90;
+
+    --popover: 15 100 20;
+    --popover-foreground: 42 100 90;
+
+    --primary: 42 100 90;
+    --primary-foreground: 11 98 25;
+
+    --secondary: 15 100 20;
+    --secondary-foreground: 42 100 90;
+
+    --muted: 15 100 20;
+    --muted-foreground: 0 0 71;
+
+    --accent: 15 100 20;
+    --accent-foreground: 42 100 90;
+
+    --destructive: 0 63 31;
+    --destructive-foreground: 42 100 90;
+
+    --border: 15 100 20;
+    --input: 15 100 20;
+    --ring: 42 100 90;
   }
 }
+
 
 @layer base {
   * {
