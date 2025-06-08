@@ -1,71 +1,70 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 248 244 240;
-    --foreground: 41 31 24;
+    --background: 255 240 207;
+    --foreground: 124 24 1;
 
     --card: 255 255 255;
-    --card-foreground: 41 31 24;
+    --card-foreground: 124 24 1;
 
     --popover: 255 255 255;
-    --popover-foreground: 41 31 24;
+    --popover-foreground: 124 24 1;
 
-    --primary: 146 64 14;
-    --primary-foreground: 248 244 240;
+    --primary: 124 24 1;
+    --primary-foreground: 255 240 207;
 
-    --secondary: 217 119 6;
-    --secondary-foreground: 41 31 24;
+    --secondary: 255 240 207;
+    --secondary-foreground: 124 24 1;
 
-    --muted: 231 223 213;
-    --muted-foreground: 115 115 115;
+    --muted: 245 230 200;
+    --muted-foreground: 100 100 100;
 
     --accent: 234 179 8;
-    --accent-foreground: 41 31 24;
+    --accent-foreground: 124 24 1;
 
     --destructive: 239 68 68;
-    --destructive-foreground: 248 244 240;
+    --destructive-foreground: 255 240 207;
 
-    --border: 217 199 181;
-    --input: 217 199 181;
-    --ring: 146 64 14;
+    --border: 220 200 180;
+    --input: 220 200 180;
+    --ring: 124 24 1;
 
     --radius: 0.75rem;
 
-    /* Updated Bengali Cultural Colors inspired by the reference image */
-    --bengali-red: 127 29 29;
+    /* Enhanced Cultural Colors using primary and secondary */
+    --bengali-red: 124 24 1;
     --bengali-gold: 234 179 8;
-    --bengali-cream: 248 244 240;
+    --bengali-cream: 255 240 207;
     --bengali-blue: 30 58 138;
     --bengali-orange: 217 119 6;
-    --bengali-brown: 146 64 14;
-    --bengali-dark-brown: 92 55 35;
-    --bengali-light-brown: 195 147 113;
+    --bengali-brown: 124 24 1;
+    --bengali-dark-brown: 80 15 0;
+    --bengali-light-brown: 200 150 120;
   }
 
   .dark {
-    --background: 41 31 24;
-    --foreground: 248 244 240;
-    --card: 59 47 38;
-    --card-foreground: 248 244 240;
-    --popover: 59 47 38;
-    --popover-foreground: 248 244 240;
-    --primary: 234 179 8;
-    --primary-foreground: 41 31 24;
-    --secondary: 59 47 38;
-    --secondary-foreground: 248 244 240;
-    --muted: 59 47 38;
-    --muted-foreground: 161 161 170;
-    --accent: 59 47 38;
-    --accent-foreground: 248 244 240;
+    --background: 124 24 1;
+    --foreground: 255 240 207;
+    --card: 100 20 0;
+    --card-foreground: 255 240 207;
+    --popover: 100 20 0;
+    --popover-foreground: 255 240 207;
+    --primary: 255 240 207;
+    --primary-foreground: 124 24 1;
+    --secondary: 100 20 0;
+    --secondary-foreground: 255 240 207;
+    --muted: 100 20 0;
+    --muted-foreground: 180 180 180;
+    --accent: 100 20 0;
+    --accent-foreground: 255 240 207;
     --destructive: 127 29 29;
-    --destructive-foreground: 248 244 240;
-    --border: 59 47 38;
-    --input: 59 47 38;
-    --ring: 234 179 8;
+    --destructive-foreground: 255 240 207;
+    --border: 100 20 0;
+    --input: 100 20 0;
+    --ring: 255 240 207;
   }
 }
 
@@ -128,21 +127,37 @@
   }
 
   .cultural-gradient {
-    background: linear-gradient(135deg, hsl(var(--bengali-red)) 0%, hsl(var(--bengali-brown)) 50%, hsl(var(--bengali-gold)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 50%, hsl(var(--secondary)) 100%);
   }
 
   .warm-gradient {
-    background: linear-gradient(135deg, hsl(var(--bengali-brown)) 0%, hsl(var(--bengali-orange)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-orange)) 100%);
+  }
+
+  .primary-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-dark-brown)) 100%);
+  }
+
+  .secondary-gradient {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--bengali-gold)) 100%);
   }
 
   .mandala-pattern {
     background-image: radial-gradient(circle at 25% 25%, hsl(var(--bengali-gold) / 0.15) 2px, transparent 2px),
-                      radial-gradient(circle at 75% 75%, hsl(var(--bengali-red) / 0.15) 2px, transparent 2px);
+                      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.15) 2px, transparent 2px);
     background-size: 50px 50px;
   }
 
   .worship-overlay {
-    background: linear-gradient(135deg, hsl(var(--bengali-red) / 0.85) 0%, hsl(var(--bengali-brown) / 0.85) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.85) 0%, hsl(var(--bengali-dark-brown) / 0.85) 100%);
+  }
+
+  .primary-shadow {
+    box-shadow: 0 10px 30px hsl(var(--primary) / 0.3);
+  }
+
+  .secondary-shadow {
+    box-shadow: 0 10px 30px hsl(var(--secondary) / 0.4);
   }
 }
 

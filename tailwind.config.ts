@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -84,6 +83,8 @@ export default {
 				'rotate-slow': 'rotate-slow 20s linear infinite',
 				'shake': 'shake 0.5s ease-in-out',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'primary-pulse': 'primary-pulse 2s ease-in-out infinite',
+				'secondary-glow': 'secondary-glow 3s ease-in-out infinite',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -144,6 +145,24 @@ export default {
 					},
 					'50%': { 
 						textShadow: '0 0 20px hsl(var(--bengali-gold) / 0.8), 0 0 30px hsl(var(--bengali-gold) / 0.5)'
+					}
+				},
+				'primary-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2)',
+						transform: 'scale(1)'
+					},
+					'50%': { 
+						boxShadow: '0 0 30px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.3)',
+						transform: 'scale(1.02)'
+					}
+				},
+				'secondary-glow': {
+					'0%, 100%': { 
+						textShadow: '0 0 10px hsl(var(--secondary) / 0.5), 0 0 20px hsl(var(--secondary) / 0.3)'
+					},
+					'50%': { 
+						textShadow: '0 0 20px hsl(var(--secondary) / 0.8), 0 0 30px hsl(var(--secondary) / 0.5)'
 					}
 				}
 			}
