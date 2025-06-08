@@ -5,65 +5,67 @@
 
 @layer base {
   :root {
-    --background: 252 252 248;
-    --foreground: 26 24 20;
+    --background: 248 244 240;
+    --foreground: 41 31 24;
 
     --card: 255 255 255;
-    --card-foreground: 26 24 20;
+    --card-foreground: 41 31 24;
 
     --popover: 255 255 255;
-    --popover-foreground: 26 24 20;
+    --popover-foreground: 41 31 24;
 
-    --primary: 220 38 127;
-    --primary-foreground: 252 252 248;
+    --primary: 146 64 14;
+    --primary-foreground: 248 244 240;
 
-    --secondary: 45 212 191;
-    --secondary-foreground: 26 24 20;
+    --secondary: 217 119 6;
+    --secondary-foreground: 41 31 24;
 
-    --muted: 245 240 235;
+    --muted: 231 223 213;
     --muted-foreground: 115 115 115;
 
-    --accent: 251 191 36;
-    --accent-foreground: 26 24 20;
+    --accent: 234 179 8;
+    --accent-foreground: 41 31 24;
 
     --destructive: 239 68 68;
-    --destructive-foreground: 252 252 248;
+    --destructive-foreground: 248 244 240;
 
-    --border: 229 231 235;
-    --input: 229 231 235;
-    --ring: 220 38 127;
+    --border: 217 199 181;
+    --input: 217 199 181;
+    --ring: 146 64 14;
 
     --radius: 0.75rem;
 
-    /* Custom Bengali Cultural Colors */
-    --bengali-red: 220 38 127;
-    --bengali-gold: 251 191 36;
-    --bengali-cream: 252 252 248;
-    --bengali-blue: 29 78 216;
-    --bengali-orange: 251 146 60;
-    --bengali-green: 34 197 94;
+    /* Updated Bengali Cultural Colors inspired by the reference image */
+    --bengali-red: 127 29 29;
+    --bengali-gold: 234 179 8;
+    --bengali-cream: 248 244 240;
+    --bengali-blue: 30 58 138;
+    --bengali-orange: 217 119 6;
+    --bengali-brown: 146 64 14;
+    --bengali-dark-brown: 92 55 35;
+    --bengali-light-brown: 195 147 113;
   }
 
   .dark {
-    --background: 26 24 20;
-    --foreground: 252 252 248;
-    --card: 39 39 42;
-    --card-foreground: 252 252 248;
-    --popover: 39 39 42;
-    --popover-foreground: 252 252 248;
-    --primary: 251 191 36;
-    --primary-foreground: 26 24 20;
-    --secondary: 39 39 42;
-    --secondary-foreground: 252 252 248;
-    --muted: 39 39 42;
+    --background: 41 31 24;
+    --foreground: 248 244 240;
+    --card: 59 47 38;
+    --card-foreground: 248 244 240;
+    --popover: 59 47 38;
+    --popover-foreground: 248 244 240;
+    --primary: 234 179 8;
+    --primary-foreground: 41 31 24;
+    --secondary: 59 47 38;
+    --secondary-foreground: 248 244 240;
+    --muted: 59 47 38;
     --muted-foreground: 161 161 170;
-    --accent: 39 39 42;
-    --accent-foreground: 252 252 248;
+    --accent: 59 47 38;
+    --accent-foreground: 248 244 240;
     --destructive: 127 29 29;
-    --destructive-foreground: 252 252 248;
-    --border: 39 39 42;
-    --input: 39 39 42;
-    --ring: 251 191 36;
+    --destructive-foreground: 248 244 240;
+    --border: 59 47 38;
+    --input: 59 47 38;
+    --ring: 234 179 8;
   }
 }
 
@@ -109,77 +111,160 @@
   .bg-bengali-orange {
     background-color: hsl(var(--bengali-orange));
   }
-  .bg-bengali-green {
-    background-color: hsl(var(--bengali-green));
+  .bg-bengali-brown {
+    background-color: hsl(var(--bengali-brown));
+  }
+  .text-bengali-brown {
+    color: hsl(var(--bengali-brown));
+  }
+  .bg-bengali-dark-brown {
+    background-color: hsl(var(--bengali-dark-brown));
+  }
+  .text-bengali-dark-brown {
+    color: hsl(var(--bengali-dark-brown));
+  }
+  .bg-bengali-light-brown {
+    background-color: hsl(var(--bengali-light-brown));
   }
 
   .cultural-gradient {
-    background: linear-gradient(135deg, hsl(var(--bengali-red)) 0%, hsl(var(--bengali-gold)) 100%);
+    background: linear-gradient(135deg, hsl(var(--bengali-red)) 0%, hsl(var(--bengali-brown)) 50%, hsl(var(--bengali-gold)) 100%);
+  }
+
+  .warm-gradient {
+    background: linear-gradient(135deg, hsl(var(--bengali-brown)) 0%, hsl(var(--bengali-orange)) 100%);
   }
 
   .mandala-pattern {
-    background-image: radial-gradient(circle at 25% 25%, hsl(var(--bengali-gold) / 0.1) 2px, transparent 2px),
-                      radial-gradient(circle at 75% 75%, hsl(var(--bengali-red) / 0.1) 2px, transparent 2px);
-    background-size: 40px 40px;
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--bengali-gold) / 0.15) 2px, transparent 2px),
+                      radial-gradient(circle at 75% 75%, hsl(var(--bengali-red) / 0.15) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
+
+  .worship-overlay {
+    background: linear-gradient(135deg, hsl(var(--bengali-red) / 0.85) 0%, hsl(var(--bengali-brown) / 0.85) 100%);
   }
 }
 
-/* Animation Keyframes */
+/* Enhanced Animation Keyframes */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(var(--bengali-gold) / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(var(--bengali-gold) / 0.6); }
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--bengali-gold) / 0.4), 0 0 40px hsl(var(--bengali-gold) / 0.2); 
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(var(--bengali-gold) / 0.6), 0 0 60px hsl(var(--bengali-gold) / 0.3); 
+    transform: scale(1.02);
+  }
 }
 
 @keyframes slide-in-left {
-  from { transform: translateX(-100%); opacity: 0; }
+  from { transform: translateX(-120%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slide-in-right {
-  from { transform: translateX(100%); opacity: 0; }
+  from { transform: translateX(120%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fade-in-up {
-  from { transform: translateY(30px); opacity: 0; }
+  from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes scale-in {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from { transform: scale(0.7) rotate(-5deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    text-shadow: 0 0 10px hsl(var(--bengali-gold) / 0.5), 0 0 20px hsl(var(--bengali-gold) / 0.3);
+  }
+  50% { 
+    text-shadow: 0 0 20px hsl(var(--bengali-gold) / 0.8), 0 0 30px hsl(var(--bengali-gold) / 0.5);
+  }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 .animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out;
+  animation: slide-in-left 1s ease-out;
 }
 
 .animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out;
+  animation: slide-in-right 1s ease-out;
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out;
+  animation: fade-in-up 0.8s ease-out;
 }
 
 .animate-scale-in {
-  animation: scale-in 0.5s ease-out;
+  animation: scale-in 0.7s ease-out;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Hover animations */
+.hover-float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+.hover-glow:hover {
+  animation: glow-pulse 1s ease-in-out infinite;
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
