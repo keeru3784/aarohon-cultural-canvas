@@ -1,94 +1,69 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 252 252 248;
+    --foreground: 26 24 20;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 255 255 255;
+    --card-foreground: 26 24 20;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 255 255 255;
+    --popover-foreground: 26 24 20;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 38 127;
+    --primary-foreground: 252 252 248;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 212 191;
+    --secondary-foreground: 26 24 20;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 245 240 235;
+    --muted-foreground: 115 115 115;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 251 191 36;
+    --accent-foreground: 26 24 20;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 239 68 68;
+    --destructive-foreground: 252 252 248;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 220 38 127;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom Bengali Cultural Colors */
+    --bengali-red: 220 38 127;
+    --bengali-gold: 251 191 36;
+    --bengali-cream: 252 252 248;
+    --bengali-blue: 29 78 216;
+    --bengali-orange: 251 146 60;
+    --bengali-green: 34 197 94;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 26 24 20;
+    --foreground: 252 252 248;
+    --card: 39 39 42;
+    --card-foreground: 252 252 248;
+    --popover: 39 39 42;
+    --popover-foreground: 252 252 248;
+    --primary: 251 191 36;
+    --primary-foreground: 26 24 20;
+    --secondary: 39 39 42;
+    --secondary-foreground: 252 252 248;
+    --muted: 39 39 42;
+    --muted-foreground: 161 161 170;
+    --accent: 39 39 42;
+    --accent-foreground: 252 252 248;
+    --destructive: 127 29 29;
+    --destructive-foreground: 252 252 248;
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 251 191 36;
   }
 }
 
@@ -98,6 +73,113 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-lato;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
   }
 }
+
+@layer utilities {
+  .text-bengali-red {
+    color: hsl(var(--bengali-red));
+  }
+  .bg-bengali-red {
+    background-color: hsl(var(--bengali-red));
+  }
+  .text-bengali-gold {
+    color: hsl(var(--bengali-gold));
+  }
+  .bg-bengali-gold {
+    background-color: hsl(var(--bengali-gold));
+  }
+  .text-bengali-cream {
+    color: hsl(var(--bengali-cream));
+  }
+  .bg-bengali-cream {
+    background-color: hsl(var(--bengali-cream));
+  }
+  .text-bengali-blue {
+    color: hsl(var(--bengali-blue));
+  }
+  .bg-bengali-blue {
+    background-color: hsl(var(--bengali-blue));
+  }
+  .bg-bengali-orange {
+    background-color: hsl(var(--bengali-orange));
+  }
+  .bg-bengali-green {
+    background-color: hsl(var(--bengali-green));
+  }
+
+  .cultural-gradient {
+    background: linear-gradient(135deg, hsl(var(--bengali-red)) 0%, hsl(var(--bengali-gold)) 100%);
+  }
+
+  .mandala-pattern {
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--bengali-gold) / 0.1) 2px, transparent 2px),
+                      radial-gradient(circle at 75% 75%, hsl(var(--bengali-red) / 0.1) 2px, transparent 2px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--bengali-gold) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--bengali-gold) / 0.6); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
