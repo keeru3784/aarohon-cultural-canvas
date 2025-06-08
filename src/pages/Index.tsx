@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -89,7 +88,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 worship-overlay z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-2000 animate-scale-in"
@@ -136,7 +135,8 @@ const Index = () => {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-24 bg-card relative overflow-hidden">
+      <section className="py-24 bg-secondary relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full animate-float stagger-1"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full animate-bounce-gentle stagger-2"></div>
         
@@ -145,7 +145,7 @@ const Index = () => {
             <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
               Upcoming Event
             </h2>
-            <div className="w-32 h-2 bg-secondary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
+            <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1 leading-relaxed">
               Join us for our upcoming cultural celebrations and community gatherings that bring our heritage to life
             </p>
@@ -154,7 +154,7 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Event Carousel */}
             <div className="animate-slide-in-left">
-              <Card className="overflow-hidden border-4 border-secondary/30 hover:border-secondary transition-all duration-500 hover:shadow-2xl animate-primary-pulse hover-float primary-shadow">
+              <Card className="overflow-hidden border-4 border-primary/30 hover:border-primary transition-all duration-500 hover:shadow-2xl animate-primary-pulse hover-float primary-shadow">
                 <div className="relative h-80">
                   <img 
                     src={upcomingEvents[currentEventIndex].image} 
@@ -186,8 +186,8 @@ const Index = () => {
                     onClick={() => setCurrentEventIndex(index)}
                     className={`w-4 h-4 rounded-full transition-all duration-500 hover:scale-125 ${
                       index === currentEventIndex 
-                        ? 'bg-secondary animate-primary-pulse scale-125' 
-                        : 'bg-secondary/40 hover:bg-secondary/70 animate-float'
+                        ? 'bg-primary animate-primary-pulse scale-125' 
+                        : 'bg-primary/40 hover:bg-primary/70 animate-float'
                     }`}
                   />
                 ))}
@@ -207,7 +207,7 @@ const Index = () => {
                     { label: 'Minutes', value: countdownTime.minutes },
                     { label: 'Seconds', value: countdownTime.seconds },
                   ].map((item, index) => (
-                    <div key={item.label} className={`primary-gradient p-8 rounded-xl text-secondary text-center transition-all duration-500 hover:scale-105 animate-primary-pulse stagger-${index + 1} hover-float primary-shadow`}>
+                    <div key={item.label} className={`bg-primary p-8 rounded-xl text-secondary text-center transition-all duration-500 hover:scale-105 animate-primary-pulse stagger-${index + 1} hover-float primary-shadow`}>
                       <div className="text-4xl md:text-5xl font-bold font-playfair mb-3 animate-secondary-glow">
                         {item.value.toString().padStart(2, '0')}
                       </div>
@@ -224,7 +224,8 @@ const Index = () => {
       </section>
 
       {/* About Aarohon Section */}
-      <section className="py-24 bg-secondary relative overflow-hidden">
+      <section className="py-24 bg-card relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute inset-0 mandala-pattern opacity-10"></div>
         <div className="absolute top-20 right-10 w-32 h-32 bg-primary/10 rounded-full animate-rotate-slow"></div>
         
@@ -267,7 +268,8 @@ const Index = () => {
       </section>
 
       {/* Gallery Highlights Section */}
-      <section className="py-24 bg-card relative overflow-hidden">
+      <section className="py-24 bg-secondary relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-secondary/5 rounded-full animate-rotate-slow"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -275,7 +277,7 @@ const Index = () => {
             <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
               2024 Highlights
             </h2>
-            <div className="w-32 h-2 bg-secondary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
+            <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1 leading-relaxed">
               Relive the sacred moments from our past celebrations and community activities that showcase our worship for humanity
             </p>
@@ -283,7 +285,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryHighlights.map((item, index) => (
-              <Card key={item.title} className={`group overflow-hidden border-4 border-secondary/30 hover:border-secondary transition-all duration-500 hover:shadow-2xl cursor-pointer animate-scale-in stagger-${(index % 3) + 1} hover-float primary-shadow`}>
+              <Card key={item.title} className={`group overflow-hidden border-4 border-primary/30 hover:border-primary transition-all duration-500 hover:shadow-2xl cursor-pointer animate-scale-in stagger-${(index % 3) + 1} hover-float primary-shadow`}>
                 <div className="relative">
                   <img 
                     src={item.image} 
@@ -318,7 +320,7 @@ const Index = () => {
       </section>
 
       {/* Community Impact Section */}
-      <section className="py-24 cultural-gradient relative overflow-hidden">
+      <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 mandala-pattern opacity-20"></div>
         <div className="absolute top-10 left-10 w-40 h-40 bg-secondary/20 rounded-full animate-float stagger-1"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 bg-primary/20 rounded-full animate-bounce-gentle stagger-3"></div>
@@ -360,6 +362,7 @@ const Index = () => {
 
       {/* Sponsors Section */}
       <section className="py-24 bg-secondary relative overflow-hidden">
+        {/* Section content with primary color highlights */}
         <div className="absolute inset-0 mandala-pattern opacity-10"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -376,7 +379,7 @@ const Index = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {sponsors.map((sponsor, index) => (
               <div key={sponsor.name} className={`text-center group animate-scale-in stagger-${(index % 3) + 1} hover-float`}>
-                <div className="w-24 h-24 bg-card border-4 border-secondary/30 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl group-hover:border-secondary transition-all duration-500 group-hover:scale-125 shadow-xl animate-primary-pulse secondary-shadow">
+                <div className="w-24 h-24 bg-card border-4 border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl group-hover:border-primary transition-all duration-500 group-hover:scale-125 shadow-xl animate-primary-pulse secondary-shadow">
                   {sponsor.logo}
                 </div>
                 <h3 className="font-lato font-semibold text-primary group-hover:text-primary transition-colors duration-300 group-hover:animate-secondary-glow">
@@ -395,11 +398,12 @@ const Index = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-card border-t-4 border-secondary/30 relative overflow-hidden">
+      <section className="py-20 bg-primary border-t-4 border-secondary/30 relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-secondary/5 rounded-full animate-rotate-slow"></div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
+          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
             Stay Connected
           </h2>
           <p className="text-xl text-muted-foreground mb-12 animate-fade-in-up stagger-1 leading-relaxed">
@@ -409,9 +413,9 @@ const Index = () => {
             <input 
               type="email" 
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 border-2 border-secondary/30 rounded-full focus:outline-none focus:border-secondary transition-all duration-300 text-lg hover:border-secondary/60"
+              className="flex-1 px-6 py-4 border-2 border-secondary/30 bg-secondary rounded-full focus:outline-none focus:border-secondary transition-all duration-300 text-lg hover:border-secondary/60 text-primary"
             />
-            <Button className="primary-gradient hover:opacity-90 text-secondary font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
+            <Button className="bg-secondary hover:bg-secondary/90 text-primary font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
               Subscribe
             </Button>
           </div>
