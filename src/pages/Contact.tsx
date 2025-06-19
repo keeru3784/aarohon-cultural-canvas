@@ -1,5 +1,5 @@
-
 import Layout from "@/components/Layout";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Mail, Phone, Globe, Clock, User } from "lucide-react";
 
@@ -107,8 +107,25 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Contact Information */}
+        {/* Contact Form Section */}
         <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6">
+                Send us a Message
+              </h2>
+              <div className="w-24 h-2 bg-primary mx-auto rounded-full"></div>
+              <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
+                Have a question or want to get involved? Fill out the form below and we'll get back to you as soon as possible.
+              </p>
+            </div>
+
+            <ContactForm />
+          </div>
+        </section>
+
+        {/* Contact Information */}
+        <section className="py-20 bg-primary/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6">
@@ -142,7 +159,7 @@ const Contact = () => {
         </section>
 
         {/* Key Contacts */}
-        <section className="py-20 bg-primary/5">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6">
@@ -191,7 +208,7 @@ const Contact = () => {
         </section>
 
         {/* Inquiry Types */}
-        <section className="py-20">
+        <section className="py-20 bg-primary/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6">
@@ -227,7 +244,7 @@ const Contact = () => {
         </section>
 
         {/* Office Hours & Additional Info */}
-        <section className="py-20 bg-primary/5">
+        <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <Card className="p-8 border-2 border-primary/20">
@@ -299,7 +316,7 @@ const Contact = () => {
               Ready to Connect?
             </h2>
             <p className="text-xl mb-8 leading-relaxed">
-              We're here to help and would love to hear from you. Reach out today!
+              We're here to help and would love to hear from you. Use the form above or reach out directly!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
