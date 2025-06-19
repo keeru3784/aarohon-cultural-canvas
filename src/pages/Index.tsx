@@ -6,33 +6,72 @@ import { Calendar, Users, MapPin, ArrowDown, Image } from "lucide-react";
 
 const Index = () => {
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
-  const [countdownTime, setCountdownTime] = useState({
-    days: 45,
-    hours: 12,
-    minutes: 30,
-    seconds: 15
-  });
 
   const upcomingEvents = [
     {
       name: "Durga Puja 2025",
       date: "October 15-19, 2025",
       location: "Community Center, Kolkata",
-      image: "/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png"
+      image: "/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png",
+      targetDate: new Date("2025-10-15T10:00:00")
     },
     {
       name: "Kali Puja Celebration",
       date: "November 1, 2025",
       location: "Local Temple Grounds",
-      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800"
+      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
+      targetDate: new Date("2025-11-01T18:00:00")
     },
     {
       name: "Cultural Night",
       date: "December 10, 2025",
       location: "City Auditorium",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800"
+      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800",
+      targetDate: new Date("2025-12-10T19:30:00")
     }
   ];
+
+  // State for each event's countdown
+  const [countdowns, setCountdowns] = useState(
+    upcomingEvents.map(() => ({ days: 0, hours: 0, minutes: 0, seconds: 0 }))
+  );
+
+  const calculateTimeLeft = (targetDate: Date) => {
+    const now = new Date().getTime();
+    const target = targetDate.getTime();
+    const difference = target - now;
+
+    if (difference > 0) {
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((difference % (1000 * 60)) / 1000)
+      };
+    }
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  };
+
+  // Update all countdowns every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const newCountdowns = upcomingEvents.map(event => 
+        calculateTimeLeft(event.targetDate)
+      );
+      setCountdowns(newCountdowns);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Auto-rotate events every 5 seconds
+  useEffect(() => {
+    const eventTimer = setInterval(() => {
+      setCurrentEventIndex((prev) => (prev + 1) % upcomingEvents.length);
+    }, 5000);
+
+    return () => clearInterval(eventTimer);
+  }, [upcomingEvents.length]);
 
   const galleryHighlights = [
     { title: "Durga Puja 2024", image: "/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png", count: "120+ Photos" },
@@ -57,33 +96,6 @@ const Index = () => {
     { name: "Community Bank", logo: "🏦" },
     { name: "Local Business Association", logo: "🏢" },
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdownTime(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const eventTimer = setInterval(() => {
-      setCurrentEventIndex((prev) => (prev + 1) % upcomingEvents.length);
-    }, 5000);
-
-    return () => clearInterval(eventTimer);
-  }, [upcomingEvents.length]);
 
   return (
     <Layout>
@@ -143,7 +155,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
-              Upcoming Event
+              Upcoming Events
             </h2>
             <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1 leading-relaxed">
@@ -151,7 +163,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Event Carousel */}
             <div className="animate-slide-in-left">
               <Card className="overflow-hidden border-4 border-primary/30 hover:border-primary transition-all duration-500 hover:shadow-2xl animate-primary-pulse hover-float primary-shadow">
@@ -194,18 +206,19 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Countdown Timer */}
+            {/* Dynamic Countdown Timer for Current Event */}
             <div className="animate-slide-in-right">
               <div className="text-center">
-                <h3 className="text-4xl font-playfair font-bold text-primary mb-12 animate-secondary-glow">
-                  Next Event Countdown
+                <h3 className="text-4xl font-playfair font-bold text-primary mb-4 animate-secondary-glow">
+                  {upcomingEvents[currentEventIndex].name}
                 </h3>
+                <p className="text-lg text-muted-foreground mb-8">Countdown Timer</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {[
-                    { label: 'Days', value: countdownTime.days },
-                    { label: 'Hours', value: countdownTime.hours },
-                    { label: 'Minutes', value: countdownTime.minutes },
-                    { label: 'Seconds', value: countdownTime.seconds },
+                    { label: 'Days', value: countdowns[currentEventIndex]?.days || 0 },
+                    { label: 'Hours', value: countdowns[currentEventIndex]?.hours || 0 },
+                    { label: 'Minutes', value: countdowns[currentEventIndex]?.minutes || 0 },
+                    { label: 'Seconds', value: countdowns[currentEventIndex]?.seconds || 0 },
                   ].map((item, index) => (
                     <div key={item.label} className={`bg-primary p-8 rounded-xl text-secondary text-center transition-all duration-500 hover:scale-105 animate-primary-pulse stagger-${index + 1} hover-float primary-shadow`}>
                       <div className="text-4xl md:text-5xl font-bold font-playfair mb-3 animate-secondary-glow">
@@ -213,6 +226,34 @@ const Index = () => {
                       </div>
                       <div className="text-sm font-lato uppercase tracking-wider">
                         {item.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* All Events Quick Overview */}
+                <div className="mt-12 space-y-4">
+                  <h4 className="text-2xl font-playfair font-bold text-primary mb-6">All Upcoming Events</h4>
+                  {upcomingEvents.map((event, index) => (
+                    <div key={event.name} className={`p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
+                      index === currentEventIndex 
+                        ? 'border-primary bg-primary/10' 
+                        : 'border-primary/30 hover:border-primary/60'
+                    }`}
+                    onClick={() => setCurrentEventIndex(index)}>
+                      <div className="flex justify-between items-center">
+                        <div className="text-left">
+                          <h5 className="font-playfair font-bold text-primary">{event.name}</h5>
+                          <p className="text-sm text-muted-foreground">{event.date}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-primary">
+                            {countdowns[index]?.days || 0}d {countdowns[index]?.hours || 0}h
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {countdowns[index]?.minutes || 0}m {countdowns[index]?.seconds || 0}s
+                          </div>
+                        </div>
                       </div>
                     </div>
                   ))}
