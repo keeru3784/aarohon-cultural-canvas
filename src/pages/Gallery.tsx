@@ -4,10 +4,13 @@ import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Image, Download, Share2, Filter } from "lucide-react";
+import { Calendar, Image, Download, Share2, Filter, Eye } from "lucide-react";
+import AlbumView from "@/components/AlbumView";
 
 const Gallery = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [albumViewOpen, setAlbumViewOpen] = useState(false);
 
   const filters = [
     { id: "all", label: "All Events", count: 350 },
@@ -103,17 +106,23 @@ const Gallery = () => {
     ? galleryAlbums 
     : galleryAlbums.filter(album => album.category === selectedFilter);
 
+  const openAlbum = (album) => {
+    setSelectedAlbum(album);
+    setAlbumViewOpen(true);
+  };
+
   return (
     <Layout>
       <div className="min-h-screen bg-secondary">
         {/* Hero Section */}
-        <section className="py-20 bg-primary text-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl md:text-6xl font-playfair font-bold mb-6">
+        <section className="py-20 bg-primary text-secondary relative overflow-hidden">
+          <div className="absolute inset-0 mandala-pattern opacity-10"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 className="text-5xl md:text-6xl font-playfair font-bold mb-6 animate-fade-in-up">
               Event Gallery
             </h1>
-            <div className="w-32 h-2 bg-secondary mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl max-w-3xl mx-auto leading-relaxed">
+            <div className="w-32 h-2 bg-secondary mx-auto mb-8 rounded-full animate-scale-in"></div>
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed animate-fade-in-up stagger-1">
               Relive the memorable moments from our cultural celebrations, community service activities, and social impact initiatives.
             </p>
           </div>
@@ -132,9 +141,9 @@ const Gallery = () => {
                   key={filter.id}
                   onClick={() => setSelectedFilter(filter.id)}
                   variant={selectedFilter === filter.id ? "default" : "outline"}
-                  className={`mb-4 ${
+                  className={`mb-4 transition-all duration-300 hover:scale-105 ${
                     selectedFilter === filter.id
-                      ? "bg-primary text-secondary"
+                      ? "bg-primary text-secondary primary-shadow"
                       : "border-primary/30 text-primary hover:bg-primary hover:text-secondary"
                   }`}
                 >
@@ -153,7 +162,11 @@ const Gallery = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredAlbums.map((album, index) => (
-                <Card key={album.id} className="group overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-500 hover:shadow-2xl">
+                <Card 
+                  key={album.id} 
+                  className="group overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="relative h-64 overflow-hidden">
                     <img 
                       src={album.coverImage} 
@@ -183,6 +196,17 @@ const Gallery = () => {
                       </Button>
                       <Button size="sm" className="bg-secondary/90 text-primary hover:bg-secondary">
                         <Share2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+
+                    {/* View Album Button - Center */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <Button
+                        onClick={() => openAlbum(album)}
+                        className="bg-primary/90 text-secondary hover:bg-primary transform scale-90 group-hover:scale-100 transition-all duration-300"
+                      >
+                        <Eye className="w-4 h-4 mr-2" />
+                        View Gallery
                       </Button>
                     </div>
                   </div>
@@ -219,7 +243,10 @@ const Gallery = () => {
                       </div>
                     </div>
 
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-secondary font-semibold transition-all duration-300 group-hover:scale-105">
+                    <Button 
+                      onClick={() => openAlbum(album)}
+                      className="w-full bg-primary hover:bg-primary/90 text-secondary font-semibold transition-all duration-300 hover:scale-105"
+                    >
                       View Album
                     </Button>
                   </CardContent>
@@ -228,7 +255,7 @@ const Gallery = () => {
             </div>
 
             {filteredAlbums.length === 0 && (
-              <div className="text-center py-20">
+              <div className="text-center py-20 animate-fade-in-up">
                 <div className="text-6xl mb-4">📸</div>
                 <h3 className="text-2xl font-playfair font-bold text-primary mb-4">
                   No Albums Found
@@ -242,32 +269,32 @@ const Gallery = () => {
         </section>
 
         {/* Gallery Stats */}
-        <section className="py-20 bg-primary text-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-primary text-secondary relative overflow-hidden">
+          <div className="absolute inset-0 mandala-pattern opacity-10"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-playfair font-bold mb-6">
+              <h2 className="text-4xl font-playfair font-bold mb-6 animate-fade-in-up">
                 Gallery Statistics
               </h2>
-              <div className="w-24 h-2 bg-secondary mx-auto rounded-full"></div>
+              <div className="w-24 h-2 bg-secondary mx-auto rounded-full animate-scale-in"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-5xl font-bold mb-2">350+</div>
-                <div className="text-lg">Total Photos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg">Event Albums</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold mb-2">25+</div>
-                <div className="text-lg">Cultural Events</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold mb-2">500+</div>
-                <div className="text-lg">Community Members</div>
-              </div>
+              {[
+                { number: "350+", label: "Total Photos" },
+                { number: "15+", label: "Event Albums" },
+                { number: "25+", label: "Cultural Events" },
+                { number: "500+", label: "Community Members" }
+              ].map((stat, index) => (
+                <div 
+                  key={stat.label}
+                  className="text-center animate-fade-in-up hover-scale"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="text-5xl font-bold mb-2 animate-glow-pulse">{stat.number}</div>
+                  <div className="text-lg">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -275,18 +302,18 @@ const Gallery = () => {
         {/* Download & Share CTA */}
         <section className="py-20 bg-primary/5">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-playfair font-bold text-primary mb-6">
+            <h2 className="text-4xl font-playfair font-bold text-primary mb-6 animate-fade-in-up">
               Share Our Journey
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-in-up stagger-1">
               Download and share photos from our events to spread awareness about our cultural and social initiatives.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-primary text-secondary px-8 py-4 rounded-full font-bold hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up stagger-2">
+              <Button className="bg-primary text-secondary px-8 py-4 rounded-full font-bold hover:bg-primary/90 transition-all duration-300 hover:scale-105 primary-shadow">
                 <Download className="w-5 h-5 mr-2" />
                 Download High-Res Photos
               </Button>
-              <Button variant="outline" className="border-2 border-primary text-primary px-8 py-4 rounded-full font-bold hover:bg-primary hover:text-secondary transition-all duration-300">
+              <Button variant="outline" className="border-2 border-primary text-primary px-8 py-4 rounded-full font-bold hover:bg-primary hover:text-secondary transition-all duration-300 hover:scale-105">
                 <Share2 className="w-5 h-5 mr-2" />
                 Share Gallery
               </Button>
@@ -294,6 +321,12 @@ const Gallery = () => {
           </div>
         </section>
       </div>
+
+      <AlbumView
+        album={selectedAlbum}
+        isOpen={albumViewOpen}
+        onClose={() => setAlbumViewOpen(false)}
+      />
     </Layout>
   );
 };
