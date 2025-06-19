@@ -1,15 +1,14 @@
 
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MapPin, Mail } from "lucide-react";
+import { Menu, X, MapPin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-// Mock Facebook, Instagram, YouTube icons as components
+// Mock social media icons
 const Facebook = () => <span className="animate-bounce-gentle">📘</span>;
 const Instagram = () => <span className="animate-float">📷</span>;
 const Youtube = () => <span className="animate-pulse-glow">📺</span>;
@@ -155,11 +154,15 @@ export default function Layout({ children }: LayoutProps) {
               <div className="space-y-4">
                 <p className="text-secondary/90 flex items-center hover-float">
                   <MapPin className="w-5 h-5 mr-3 animate-bounce-gentle" />
-                  Kolkata, West Bengal
+                  Whitefield & Kadugodi, Bangalore
                 </p>
                 <p className="text-secondary/90 flex items-center hover-float">
                   <Mail className="w-5 h-5 mr-3 animate-primary-pulse" />
-                  info@aarohonclub.org
+                  aarohan.blr@gmail.com
+                </p>
+                <p className="text-secondary/90 flex items-center hover-float">
+                  <Phone className="w-5 h-5 mr-3 animate-bounce-gentle" />
+                  Contact: Anirban Ghosh
                 </p>
               </div>
             </div>
@@ -167,7 +170,7 @@ export default function Layout({ children }: LayoutProps) {
 
           <div className="border-t border-secondary/30 mt-12 pt-8 text-center animate-fade-in-up stagger-4">
             <p className="text-secondary/80 hover-glow">
-              © 2024 Aarohon Socio-Cultural Club. All rights reserved. | Worship for Humanity
+              © 2024 Aarohon Socio-Cultural Club. All rights reserved. | www.aarohansocio.in
             </p>
           </div>
         </div>
@@ -175,4 +178,3 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   );
 }
-
