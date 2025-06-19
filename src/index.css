@@ -19,16 +19,16 @@
     --secondary: 42 100 90;
     --secondary-foreground: 11 98 25;
 
-    --muted: 42 100 90;
+    --muted: 42 100 85;
     --muted-foreground: 0 0 39;
 
-    --accent: 11 98 25;
-    --accent-foreground: 42 100 90;
+    --accent: 11 98 90;
+    --accent-foreground: 11 98 25;
 
     --destructive: 0 84 60;
     --destructive-foreground: 42 100 90;
 
-    --border: 11 98 25;
+    --border: 11 98 88;
     --input: 42 100 90;
     --ring: 11 98 25;
 
@@ -46,44 +46,54 @@
   }
 
   .dark {
-    --background: 11 98 25;
+    --background: 11 98 8;
     --foreground: 42 100 90;
 
-    --card: 15 100 20;
+    --card: 11 98 12;
     --card-foreground: 42 100 90;
 
-    --popover: 15 100 20;
+    --popover: 11 98 12;
     --popover-foreground: 42 100 90;
 
-    --primary: 42 100 90;
-    --primary-foreground: 11 98 25;
+    --primary: 46 93 47;
+    --primary-foreground: 11 98 8;
 
-    --secondary: 15 100 20;
+    --secondary: 11 98 15;
     --secondary-foreground: 42 100 90;
 
-    --muted: 15 100 20;
-    --muted-foreground: 0 0 71;
+    --muted: 11 98 15;
+    --muted-foreground: 0 0 65;
 
-    --accent: 15 100 20;
+    --accent: 11 98 18;
     --accent-foreground: 42 100 90;
 
-    --destructive: 0 63 31;
+    --destructive: 0 84 60;
     --destructive-foreground: 42 100 90;
 
-    --border: 15 100 20;
-    --input: 15 100 20;
-    --ring: 42 100 90;
+    --border: 11 98 18;
+    --input: 11 98 15;
+    --ring: 46 93 47;
+
+    /* Dark mode cultural colors */
+    --bengali-red: 11 98 45;
+    --bengali-gold: 46 93 55;
+    --bengali-cream: 42 100 85;
+    --bengali-blue: 231 63 50;
+    --bengali-orange: 33 94 55;
+    --bengali-brown: 11 98 35;
+    --bengali-dark-brown: 13 100 25;
+    --bengali-light-brown: 30 41 70;
   }
 }
 
-
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
     @apply bg-background text-foreground font-lato;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -171,6 +181,16 @@
 
   .secondary-shadow {
     box-shadow: 0 10px 30px hsl(var(--secondary) / 0.4);
+  }
+
+  .dark-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+  }
+
+  .glass-effect {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
   }
 }
 
@@ -275,6 +295,25 @@
 
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Dark mode specific enhancements */
+.dark .cultural-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 50%, hsl(var(--accent)) 100%);
+}
+
+.dark .mandala-pattern {
+  background-image: radial-gradient(circle at 25% 25%, hsl(var(--bengali-gold) / 0.25) 2px, transparent 2px),
+                    radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.25) 2px, transparent 2px);
+}
+
+.dark .worship-overlay {
+  background: linear-gradient(135deg, hsl(var(--background) / 0.9) 0%, hsl(var(--card) / 0.9) 100%);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .stagger-1 { animation-delay: 0.1s; }

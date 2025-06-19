@@ -1,180 +1,181 @@
 
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MapPin, Mail, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
-// Mock social media icons
-const Facebook = () => <span className="animate-bounce-gentle">📘</span>;
-const Instagram = () => <span className="animate-float">📷</span>;
-const Youtube = () => <span className="animate-pulse-glow">📺</span>;
-
-export default function Layout({ children }: LayoutProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navItems = [
+  const navigation = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About", href: "/about" },
     { name: "Events", href: "/events" },
-    { name: "Our Team", href: "/team" },
-    { name: "Sponsors", href: "/sponsors" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Team", href: "/team" },
     { name: "Social Impact", href: "/social-impact" },
+    { name: "Sponsors", href: "/sponsors" },
     { name: "Membership", href: "/membership" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <div className="min-h-screen bg-secondary">
-      {/* Navigation */}
-      <nav className="bg-primary/95 backdrop-blur-sm shadow-2xl sticky top-0 z-50 border-b-4 border-secondary animate-slide-in-left">
+    <div className="min-h-screen bg-background">
+      <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center animate-primary-pulse hover-float group-hover:animate-rotate-slow">
-                <span className="text-primary font-bold text-xl animate-glow-pulse">আ</span>
-              </div>
-              <div>
-                <h1 className="text-2xl font-playfair font-bold text-secondary hover-glow transition-all duration-300">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center space-x-2">
+                <img
+                  src="/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png"
+                  alt="Aarohon Logo"
+                  className="h-10 w-10"
+                />
+                <span className="text-xl font-playfair font-bold text-primary">
                   Aarohon
-                </h1>
-                <p className="text-sm text-secondary/80 animate-fade-in-up stagger-1">Socio-Cultural Club</p>
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`text-secondary hover:text-secondary/80 transition-all duration-300 font-medium relative group animate-fade-in-up stagger-${index + 1} hover-shake`}
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-1 bg-secondary transition-all duration-500 group-hover:w-full animate-primary-pulse"></span>
-                </Link>
-              ))}
-              <Button className="bg-secondary hover:bg-secondary/90 text-primary font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:scale-110 animate-primary-pulse hover-float">
-                Join Us
-              </Button>
+                </span>
+              </Link>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-secondary hover:bg-secondary/20 hover-shake"
-              >
-                {isMenuOpen ? <X size={24} className="animate-scale-in" /> : <Menu size={24} className="animate-scale-in" />}
-              </Button>
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.href
+                        ? "bg-primary text-primary-foreground"
+                        : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Theme Toggle and Mobile Menu Button */}
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              <div className="md:hidden">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-primary/95 backdrop-blur-sm border-t-2 border-secondary animate-slide-in-left shadow-xl">
-            <div className="px-4 pt-2 pb-4 space-y-3">
-              {navItems.map((item, index) => (
+        {isOpen && (
+          <div className="md:hidden border-t border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background">
+              {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block py-3 px-4 text-secondary hover:text-secondary/80 transition-all duration-300 font-medium rounded-md hover:bg-secondary/10 animate-fade-in-up stagger-${index + 1} hover-float`}
-                  onClick={() => setIsMenuOpen(false)}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    location.pathname === item.href
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                  }`}
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="w-full bg-secondary hover:bg-secondary/90 text-primary font-semibold py-3 rounded-full transition-all duration-300 animate-primary-pulse">
-                Join Us
-              </Button>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Main Content */}
       <main>{children}</main>
 
-      {/* Footer */}
-      <footer className="bg-primary text-secondary py-16 mt-20 relative overflow-hidden">
-        <div className="absolute inset-0 mandala-pattern opacity-20"></div>
-        <div className="absolute top-0 left-0 w-32 h-32 bg-secondary/20 rounded-full animate-float stagger-1"></div>
-        <div className="absolute bottom-0 right-0 w-24 h-24 bg-secondary/30 rounded-full animate-bounce-gentle stagger-3"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <footer className="bg-card border-t border-border">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Logo and Description */}
-            <div className="md:col-span-2 animate-slide-in-left">
-              <div className="flex items-center space-x-3 mb-6 group">
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center animate-primary-pulse hover-float group-hover:animate-rotate-slow">
-                  <span className="text-primary font-bold text-lg animate-glow-pulse">আ</span>
-                </div>
-                <h3 className="text-2xl font-playfair font-bold hover-glow">Aarohon Socio-Cultural Club</h3>
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <img
+                  src="/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png"
+                  alt="Aarohon Logo"
+                  className="h-8 w-8"
+                />
+                <span className="text-lg font-playfair font-bold text-primary">
+                  Aarohon Socio-Cultural Club
+                </span>
               </div>
-              <p className="text-secondary/90 mb-6 leading-relaxed animate-fade-in-up stagger-1">
-                Celebrating Culture, Connecting People. Join us in preserving and promoting Bengali heritage while building a stronger community through worship for humanity.
+              <p className="text-muted-foreground mb-4">
+                Preserving Bengali culture and building community connections in Bangalore.
               </p>
               <div className="flex space-x-4">
-                <Button variant="outline" size="icon" className="border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 hover:scale-110 animate-scale-in stagger-1">
-                  <Facebook />
-                </Button>
-                <Button variant="outline" size="icon" className="border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 hover:scale-110 animate-scale-in stagger-2">
-                  <Instagram />
-                </Button>
-                <Button variant="outline" size="icon" className="border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 hover:scale-110 animate-scale-in stagger-3">
-                  <Youtube />
-                </Button>
+                <a href="#" className="text-muted-foreground hover:text-primary">
+                  Facebook
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary">
+                  Instagram
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary">
+                  WhatsApp
+                </a>
               </div>
             </div>
-
-            {/* Quick Links */}
-            <div className="animate-slide-in-right stagger-1">
-              <h4 className="font-playfair font-semibold text-xl mb-6 text-secondary animate-secondary-glow">Quick Links</h4>
-              <ul className="space-y-3">
-                {navItems.slice(0, 4).map((item, index) => (
-                  <li key={item.name} className={`animate-fade-in-up stagger-${index + 1}`}>
-                    <Link to={item.href} className="text-secondary/90 hover:text-secondary transition-all duration-300 hover:pl-2 hover-glow">
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
+            <div>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                Quick Links
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/about" className="text-muted-foreground hover:text-primary">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/events" className="text-muted-foreground hover:text-primary">
+                    Events
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/membership" className="text-muted-foreground hover:text-primary">
+                    Membership
+                  </Link>
+                </li>
               </ul>
             </div>
-
-            {/* Contact Info */}
-            <div className="animate-slide-in-right stagger-2">
-              <h4 className="font-playfair font-semibold text-xl mb-6 text-secondary animate-secondary-glow">Contact Us</h4>
-              <div className="space-y-4">
-                <p className="text-secondary/90 flex items-center hover-float">
-                  <MapPin className="w-5 h-5 mr-3 animate-bounce-gentle" />
-                  Whitefield & Kadugodi, Bangalore
-                </p>
-                <p className="text-secondary/90 flex items-center hover-float">
-                  <Mail className="w-5 h-5 mr-3 animate-primary-pulse" />
-                  aarohan.blr@gmail.com
-                </p>
-                <p className="text-secondary/90 flex items-center hover-float">
-                  <Phone className="w-5 h-5 mr-3 animate-bounce-gentle" />
-                  Contact: Anirban Ghosh
-                </p>
-              </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                Contact
+              </h3>
+              <ul className="space-y-2">
+                <li className="text-muted-foreground">
+                  Email: aarohan.blr@gmail.com
+                </li>
+                <li className="text-muted-foreground">
+                  Phone: +91 98765 43210
+                </li>
+                <li className="text-muted-foreground">
+                  Bangalore, Karnataka
+                </li>
+              </ul>
             </div>
           </div>
-
-          <div className="border-t border-secondary/30 mt-12 pt-8 text-center animate-fade-in-up stagger-4">
-            <p className="text-secondary/80 hover-glow">
-              © 2024 Aarohon Socio-Cultural Club. All rights reserved. | www.aarohansocio.in
+          <div className="mt-8 border-t border-border pt-8">
+            <p className="text-center text-muted-foreground">
+              © 2024 Aarohon Socio-Cultural Club. All rights reserved.
             </p>
           </div>
         </div>
       </footer>
     </div>
   );
-}
+};
+
+export default Layout;
