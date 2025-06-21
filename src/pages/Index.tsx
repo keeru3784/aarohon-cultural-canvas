@@ -12,21 +12,21 @@ const Index = () => {
       name: "Durga Puja 2025",
       date: "October 15-19, 2025",
       location: "Community Center, Kolkata",
-      image: "/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png",
+      image: "/assets/landing-page/landing(1).jpg",
       targetDate: new Date("2025-10-15T10:00:00")
     },
     {
       name: "Kali Puja Celebration",
       date: "November 1, 2025",
       location: "Local Temple Grounds",
-      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
+      image: "/assets/landing-page/landing(2).jpg",
       targetDate: new Date("2025-11-01T18:00:00")
     },
     {
       name: "Cultural Night",
       date: "December 10, 2025",
       location: "City Auditorium",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800",
+      image: "/assets/landing-page/landing(3).jpg",
       targetDate: new Date("2025-12-10T19:30:00")
     }
   ];
@@ -157,13 +157,21 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 worship-overlay z-10"></div>
+        {/* Base background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(/assets/landing-page/landing-page-bg.jpg)`
+          }}
+        ></div>
+        {/* Dynamic event background */}
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-2000 animate-scale-in"
           style={{
             backgroundImage: `url(${upcomingEvents[currentEventIndex].image})`
           }}
         ></div>
-        <div className="absolute inset-0 mandala-pattern z-20 animate-primary-pulse"></div>
+        <div className="absolute inset-0 mandala-pattern z-20 animate-primary-pulse opacity-50"></div>
         
         {/* Floating decorative elements */}
         <div className="absolute top-20 left-10 w-16 h-16 bg-secondary/30 rounded-full animate-float stagger-1"></div>
@@ -172,24 +180,24 @@ const Index = () => {
         
         <div className="relative z-30 text-center text-secondary px-4 max-w-5xl mx-auto">
           <div className="animate-fade-in-up">
-            <h1 className="text-6xl md:text-8xl font-playfair font-bold mb-8 animate-secondary-glow hover-float">
+            <h1 className="text-6xl md:text-8xl font-poppins font-bold mb-8 hover:animate-secondary-glow hover-float opacity-70">
               Aarohon
             </h1>
-            <div className="w-32 h-2 bg-secondary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
-            <p className="text-2xl md:text-3xl font-lato mb-6 animate-fade-in-up stagger-1 animate-secondary-glow">
+            <div className="w-32 h-2 bg-secondary mx-auto mb-8 animate-primary-pulse rounded-full opacity-50"></div>
+            <p className="text-2xl md:text-3xl font-poppins mb-6 animate-fade-in-up stagger-1 animate-secondary-glow opacity-50">
               Worship for Humanity
             </p>
-            <p className="text-xl md:text-2xl font-lato mb-8 animate-fade-in-up stagger-2">
+            <p className="text-xl md:text-2xl font-poppins mb-8 animate-fade-in-up stagger-2 opacity-50">
               Celebrating Culture, Connecting People
             </p>
-            <p className="text-lg md:text-xl mb-16 text-secondary/95 animate-fade-in-up stagger-3 leading-relaxed">
+            <p className="text-lg md:text-xl mb-16 text-secondary/95 animate-fade-in-up stagger-3 leading-relaxed opacity-50">
               Join us in preserving Bengali heritage while building a stronger, more connected community through worship and cultural celebration
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up stagger-4">
               <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float secondary-shadow">
                 VIEW UPCOMING EVENTS
               </Button>
-              <Button size="lg" className="bg-transparent border-3 border-secondary text-secondary hover:bg-secondary hover:text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-shake backdrop-blur-sm shadow-lg">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
                 Learn About Us
               </Button>
             </div>
@@ -209,7 +217,7 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
+            <h2 className="text-5xl md:text-6xl font-poppins font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
               Upcoming Events
             </h2>
             <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
@@ -230,7 +238,7 @@ const Index = () => {
                   />
                   <div className="absolute inset-0 worship-overlay"></div>
                   <div className="absolute bottom-6 left-6 text-secondary">
-                    <h3 className="text-3xl font-playfair font-bold mb-3 animate-secondary-glow">
+                    <h3 className="text-3xl font-poppins font-bold mb-3 animate-secondary-glow">
                       {upcomingEvents[currentEventIndex].name}
                     </h3>
                     <p className="flex items-center mb-2 text-lg">
@@ -264,7 +272,7 @@ const Index = () => {
             {/* Dynamic Countdown Timer for Current Event */}
             <div className="animate-slide-in-right">
               <div className="text-center">
-                <h3 className="text-4xl font-playfair font-bold text-primary mb-4 animate-secondary-glow">
+                <h3 className="text-4xl font-poppins font-bold text-primary mb-4 animate-secondary-glow">
                   {upcomingEvents[currentEventIndex].name}
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">Countdown Timer</p>
@@ -276,10 +284,10 @@ const Index = () => {
                     { label: 'Seconds', value: countdowns[currentEventIndex]?.seconds || 0 },
                   ].map((item, index) => (
                     <div key={item.label} className={`bg-primary p-8 rounded-xl text-secondary text-center transition-all duration-500 hover:scale-105 animate-primary-pulse stagger-${index + 1} hover-float primary-shadow`}>
-                      <div className="text-4xl md:text-5xl font-bold font-playfair mb-3 animate-secondary-glow">
+                      <div className="text-4xl md:text-5xl font-bold font-poppins mb-3 animate-secondary-glow">
                         {item.value.toString().padStart(2, '0')}
                       </div>
-                      <div className="text-sm font-lato uppercase tracking-wider">
+                      <div className="text-sm font-poppins uppercase tracking-wider">
                         {item.label}
                       </div>
                     </div>
@@ -288,7 +296,7 @@ const Index = () => {
 
                 {/* All Events Quick Overview */}
                 <div className="mt-12 space-y-4">
-                  <h4 className="text-2xl font-playfair font-bold text-primary mb-6">All Upcoming Events</h4>
+                  <h4 className="text-2xl font-poppins font-bold text-primary mb-6">All Upcoming Events</h4>
                   {upcomingEvents.map((event, index) => (
                     <div key={event.name} className={`p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
                       index === currentEventIndex 
@@ -298,7 +306,7 @@ const Index = () => {
                     onClick={() => setCurrentEventIndex(index)}>
                       <div className="flex justify-between items-center">
                         <div className="text-left">
-                          <h5 className="font-playfair font-bold text-primary">{event.name}</h5>
+                          <h5 className="font-poppins font-bold text-primary">{event.name}</h5>
                           <p className="text-sm text-muted-foreground">{event.date}</p>
                         </div>
                         <div className="text-right">
@@ -328,7 +336,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-slide-in-left">
-              <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-8 animate-secondary-glow">
+              <h2 className="text-5xl md:text-6xl font-poppins font-bold text-primary mb-8 animate-secondary-glow">
                 About Aarohon
               </h2>
               <div className="w-32 h-2 bg-primary mb-8 animate-primary-pulse rounded-full"></div>
@@ -370,7 +378,7 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
+            <h2 className="text-5xl md:text-6xl font-poppins font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
               2024 Highlights
             </h2>
             <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
@@ -390,7 +398,7 @@ const Index = () => {
                   />
                   <div className="absolute inset-0 worship-overlay opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                   <div className="absolute bottom-6 left-6 text-secondary opacity-0 group-hover:opacity-100 transition-all duration-500 animate-fade-in-up">
-                    <h3 className="font-playfair font-bold text-xl mb-2 animate-secondary-glow">{item.title}</h3>
+                    <h3 className="font-poppins font-bold text-xl mb-2 animate-secondary-glow">{item.title}</h3>
                     <p className="flex items-center text-sm">
                       <Image className="w-4 h-4 mr-2 animate-bounce-gentle" />
                       {item.count}
@@ -398,7 +406,7 @@ const Index = () => {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-playfair font-bold text-xl text-primary mb-3 group-hover:text-secondary transition-colors duration-300">
+                  <h3 className="font-poppins font-bold text-xl text-primary mb-3 group-hover:text-secondary transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-muted-foreground">{item.count}</p>
@@ -423,7 +431,7 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
+            <h2 className="text-5xl md:text-6xl font-poppins font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
               Community Impact
             </h2>
             <div className="w-32 h-2 bg-secondary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
@@ -438,10 +446,10 @@ const Index = () => {
                 <div className="w-24 h-24 bg-secondary/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6 text-4xl animate-bounce-gentle group-hover:animate-rotate-slow transition-all duration-500 group-hover:scale-110 secondary-shadow">
                   {stat.icon}
                 </div>
-                <div className="text-5xl md:text-6xl font-playfair font-bold text-secondary mb-4 animate-secondary-glow">
+                <div className="text-5xl md:text-6xl font-poppins font-bold text-secondary mb-4 animate-secondary-glow">
                   {stat.value}
                 </div>
-                <div className="text-secondary/95 font-lato text-xl group-hover:text-secondary transition-colors duration-300">
+                <div className="text-secondary/95 font-poppins text-xl group-hover:text-secondary transition-colors duration-300">
                   {stat.label}
                 </div>
               </div>
@@ -462,7 +470,7 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up">
+            <h2 className="text-5xl md:text-6xl font-poppins font-bold text-primary mb-6 animate-fade-in-up">
               Our Sponsors & Partners
             </h2>
             <div className="w-32 h-2 bg-primary mx-auto mb-8 rounded-full"></div>
@@ -482,7 +490,7 @@ const Index = () => {
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-playfair font-bold text-primary text-sm mb-1 group-hover:text-bengali-gold transition-colors duration-300">
+                  <h3 className="font-poppins font-bold text-primary text-sm mb-1 group-hover:text-bengali-gold transition-colors duration-300">
                     {sponsor.name}
                   </h3>
                   <p className="text-xs text-muted-foreground group-hover:text-primary/70 transition-colors duration-300">
@@ -507,7 +515,7 @@ const Index = () => {
         <div className="absolute top-0 right-0 w-48 h-48 bg-secondary/5 rounded-full animate-rotate-slow"></div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
+          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
             Stay Connected
           </h2>
           <p className="text-xl text-secondary/90 mb-12 animate-fade-in-up stagger-1 leading-relaxed">
