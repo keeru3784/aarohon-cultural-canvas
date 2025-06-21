@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -23,17 +22,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50">
+      <nav className="bg-background/80 backdrop-blur-lg border-b border-border/50 sticky top-0 z-50 transition-all duration-300 hover:bg-background/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2 group">
                 <img
                   src="/lovable-uploads/2635923e-c8e1-4146-a7bc-1ac251e1ad56.png"
                   alt="Aarohon Logo"
-                  className="h-10 w-10"
+                  className="h-10 w-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 />
-                <span className="text-xl font-playfair font-bold text-primary">
+                <span className="text-xl font-playfair font-bold text-primary transition-all duration-300 group-hover:text-bengali-gold">
                   Aarohon
                 </span>
               </Link>
@@ -41,18 +40,24 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navigation.map((item) => (
+              <div className="ml-10 flex items-baseline space-x-1">
+                {navigation.map((item, index) => (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 relative overflow-hidden group ${
                       location.pathname === item.href
-                        ? "bg-primary text-primary-foreground"
-                        : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                        : "text-foreground hover:bg-gradient-to-r hover:from-primary/10 hover:to-bengali-gold/10 hover:text-primary"
                     }`}
+                    style={{
+                      animationDelay: `${index * 0.1}s`
+                    }}
                   >
-                    {item.name}
+                    <span className="relative z-10">{item.name}</span>
+                    {location.pathname !== item.href && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-bengali-gold/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -66,8 +71,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   variant="outline"
                   size="icon"
                   onClick={() => setIsOpen(!isOpen)}
+                  className="transition-all duration-300 hover:scale-110 hover:rotate-12"
                 >
-                  {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                  {isOpen ? (
+                    <X className="h-4 w-4 transition-transform duration-300 rotate-90" />
+                  ) : (
+                    <Menu className="h-4 w-4 transition-transform duration-300" />
+                  )}
                 </Button>
               </div>
             </div>
@@ -75,26 +85,30 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    location.pathname === item.href
-                      ? "bg-primary text-primary-foreground"
-                      : "text-foreground hover:bg-accent hover:text-accent-foreground"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+        <div className={`md:hidden border-t border-border/50 transition-all duration-500 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+        }`}>
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md">
+            {navigation.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 transform hover:translate-x-2 ${
+                  location.pathname === item.href
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "text-foreground hover:bg-gradient-to-r hover:from-primary/10 hover:to-bengali-gold/10 hover:text-primary"
+                }`}
+                onClick={() => setIsOpen(false)}
+                style={{
+                  animationDelay: `${index * 0.05}s`,
+                  animation: isOpen ? `slide-in-left 0.3s ease-out ${index * 0.05}s both` : 'none'
+                }}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
-        )}
+        </div>
       </nav>
 
       <main>{children}</main>

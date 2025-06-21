@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -172,7 +173,7 @@
   }
 
   .worship-overlay {
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.85) 0%, hsl(var(--bengali-dark-brown) / 0.85) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.4) 0%, hsl(var(--bengali-dark-brown) / 0.4) 100%);
   }
 
   .primary-shadow {
@@ -257,6 +258,23 @@
   }
 }
 
+/* Navigation specific animations */
+@keyframes nav-slide-down {
+  from { 
+    transform: translateY(-100%); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes nav-item-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.05); }
+}
+
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -297,6 +315,14 @@
   animation: glow-pulse 2s ease-in-out infinite;
 }
 
+.animate-nav-slide-down {
+  animation: nav-slide-down 0.3s ease-out;
+}
+
+.animate-nav-item-bounce {
+  animation: nav-item-bounce 0.3s ease-out;
+}
+
 /* Dark mode specific enhancements */
 .dark .cultural-gradient {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 50%, hsl(var(--accent)) 100%);
@@ -308,7 +334,7 @@
 }
 
 .dark .worship-overlay {
-  background: linear-gradient(135deg, hsl(var(--background) / 0.9) 0%, hsl(var(--card) / 0.9) 100%);
+  background: linear-gradient(135deg, hsl(var(--background) / 0.6) 0%, hsl(var(--card) / 0.6) 100%);
 }
 
 /* Smooth transitions for theme switching */
@@ -334,4 +360,30 @@
 
 .hover-shake:hover {
   animation: shake 0.5s ease-in-out;
+}
+
+/* Enhanced button styles for better visibility */
+.hero-button {
+  @apply px-8 py-4 text-lg font-semibold rounded-xl;
+  @apply bg-gradient-to-r from-primary to-bengali-gold;
+  @apply text-white shadow-lg shadow-primary/25;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:shadow-xl hover:shadow-primary/40;
+  @apply hover:scale-105 hover:-translate-y-1;
+  @apply border-2 border-transparent;
+}
+
+.hero-button-outline {
+  @apply px-8 py-4 text-lg font-semibold rounded-xl;
+  @apply bg-transparent border-2 border-white/80;
+  @apply text-white backdrop-blur-sm;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:bg-white/10 hover:border-white;
+  @apply hover:scale-105 hover:-translate-y-1;
+  @apply hover:shadow-lg hover:shadow-white/25;
+}
+
+.dark .hero-button-outline {
+  @apply border-bengali-gold/60 text-bengali-gold;
+  @apply hover:bg-bengali-gold/10 hover:border-bengali-gold;
 }
