@@ -90,11 +90,66 @@ const Index = () => {
   ];
 
   const sponsors = [
-    { name: "Heritage Foods", logo: "🍽️" },
-    { name: "Bengal Textiles", logo: "🧵" },
-    { name: "Cultural Arts Foundation", logo: "🎨" },
-    { name: "Community Bank", logo: "🏦" },
-    { name: "Local Business Association", logo: "🏢" },
+    { 
+      name: "Senco Golds", 
+      logo: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&h=120&fit=crop&crop=center",
+      description: "Premium Jewelry Partner"
+    },
+    { 
+      name: "Varun Motors Pvt. Ltd", 
+      logo: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=120&h=120&fit=crop&crop=center",
+      description: "Automobile Solutions"
+    },
+    { 
+      name: "PNC Cognito School", 
+      logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=120&h=120&fit=crop&crop=center",
+      description: "Educational Excellence"
+    },
+    { 
+      name: "Little Villa Preschool Kadugodi", 
+      logo: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=120&h=120&fit=crop&crop=center",
+      description: "Early Childhood Development"
+    },
+    { 
+      name: "Milaan - The Fertility Specialist", 
+      logo: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=120&h=120&fit=crop&crop=center",
+      description: "Healthcare Excellence"
+    },
+    { 
+      name: "Manipal Hospitals", 
+      logo: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=120&h=120&fit=crop&crop=center",
+      description: "Healthcare Partner"
+    },
+    { 
+      name: "Axis Bank", 
+      logo: "https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=120&h=120&fit=crop&crop=center",
+      description: "Banking Solutions"
+    },
+    { 
+      name: "Medicover Hospitals", 
+      logo: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=120&h=120&fit=crop&crop=center",
+      description: "Medical Care"
+    },
+    { 
+      name: "Nancy Yoga Studio", 
+      logo: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=120&h=120&fit=crop&crop=center",
+      description: "Wellness & Fitness"
+    },
+    { 
+      name: "IFB", 
+      logo: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=120&h=120&fit=crop&crop=center",
+      description: "Home Appliances"
+    },
+    { 
+      name: "Yuvi Pep", 
+      logo: "https://images.unsplash.com/photo-1594736797933-d0801ba2fe65?w=120&h=120&fit=crop&crop=center",
+      description: "Food & Beverages"
+    },
+    { 
+      name: "Bisleri Limonata", 
+      logo: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=120&h=120&fit=crop&crop=center",
+      description: "Refreshment Partner"
+    }
   ];
 
   return (
@@ -134,7 +189,7 @@ const Index = () => {
               <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float secondary-shadow">
                 VIEW UPCOMING EVENTS
               </Button>
-              <Button variant="outline" size="lg" className="border-3 border-secondary text-secondary hover:bg-secondary hover:text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-shake">
+              <Button size="lg" className="bg-transparent border-3 border-secondary text-secondary hover:bg-secondary hover:text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-shake backdrop-blur-sm shadow-lg">
                 Learn About Us
               </Button>
             </div>
@@ -286,7 +341,7 @@ const Index = () => {
               <p className="text-xl text-muted-foreground mb-12 leading-relaxed animate-fade-in-up stagger-3">
                 From grand festival celebrations like Durga Puja and Kali Puja to educational programs and community service, Aarohon serves as a bridge between tradition and progress.
               </p>
-              <Button className="primary-gradient hover:opacity-90 text-secondary font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
                 Learn More About Us
               </Button>
             </div>
@@ -402,36 +457,44 @@ const Index = () => {
       </section>
 
       {/* Sponsors Section */}
-      <section className="py-24 bg-secondary relative overflow-hidden">
-        {/* Section content with primary color highlights */}
-        <div className="absolute inset-0 mandala-pattern opacity-10"></div>
+      <section className="py-24 bg-gradient-to-br from-bengali-cream to-secondary/10 relative overflow-hidden">
+        <div className="absolute inset-0 mandala-pattern opacity-5"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up animate-secondary-glow">
+            <h2 className="text-5xl md:text-6xl font-playfair font-bold text-primary mb-6 animate-fade-in-up">
               Our Sponsors & Partners
             </h2>
-            <div className="w-32 h-2 bg-primary mx-auto mb-8 animate-primary-pulse rounded-full"></div>
+            <div className="w-32 h-2 bg-primary mx-auto mb-8 rounded-full"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1 leading-relaxed">
               Proudly supported by these amazing organizations who share our vision of worship for humanity
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 mb-16">
             {sponsors.map((sponsor, index) => (
-              <div key={sponsor.name} className={`text-center group animate-scale-in stagger-${(index % 3) + 1} hover-float`}>
-                <div className="w-24 h-24 bg-card border-4 border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl group-hover:border-primary transition-all duration-500 group-hover:scale-125 shadow-xl animate-primary-pulse secondary-shadow">
-                  {sponsor.logo}
+              <div key={sponsor.name} className={`group animate-scale-in stagger-${(index % 6) + 1}`}>
+                <div className="bg-white rounded-full w-32 h-32 mx-auto mb-4 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 group-hover:-translate-y-2 border-4 border-white hover:border-primary/20 overflow-hidden">
+                  <img 
+                    src={sponsor.logo} 
+                    alt={sponsor.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
-                <h3 className="font-lato font-semibold text-primary group-hover:text-primary transition-colors duration-300 group-hover:animate-secondary-glow">
-                  {sponsor.name}
-                </h3>
+                <div className="text-center">
+                  <h3 className="font-playfair font-bold text-primary text-sm mb-1 group-hover:text-bengali-gold transition-colors duration-300">
+                    {sponsor.name}
+                  </h3>
+                  <p className="text-xs text-muted-foreground group-hover:text-primary/70 transition-colors duration-300">
+                    {sponsor.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <Button variant="outline" size="lg" className="border-3 border-primary text-primary hover:bg-primary hover:text-secondary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-float">
+          <div className="text-center">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-float shadow-lg">
               View All Sponsors
             </Button>
           </div>
@@ -447,14 +510,14 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-secondary mb-6 animate-fade-in-up animate-secondary-glow">
             Stay Connected
           </h2>
-          <p className="text-xl text-muted-foreground mb-12 animate-fade-in-up stagger-1 leading-relaxed">
+          <p className="text-xl text-secondary/90 mb-12 animate-fade-in-up stagger-1 leading-relaxed">
             Subscribe to our newsletter for updates on upcoming events, worship activities, and community news
           </p>
           <div className="flex flex-col sm:flex-row gap-6 max-w-lg mx-auto animate-fade-in-up stagger-2">
             <input 
               type="email" 
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 border-2 border-secondary/30 bg-secondary rounded-full focus:outline-none focus:border-secondary transition-all duration-300 text-lg hover:border-secondary/60 text-primary"
+              className="flex-1 px-6 py-4 border-2 border-secondary/30 bg-secondary/10 backdrop-blur-sm rounded-full focus:outline-none focus:border-secondary transition-all duration-300 text-lg hover:border-secondary/60 text-secondary placeholder-secondary/70"
             />
             <Button className="bg-secondary hover:bg-secondary/90 text-primary font-bold px-8 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float primary-shadow">
               Subscribe
