@@ -186,10 +186,10 @@ const Index = () => {
               Join us in preserving Bengali heritage while building a stronger, more connected community through worship and cultural celebration
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up stagger-4">
-              <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 animate-primary-pulse text-lg hover-float secondary-shadow">
+              <Button size="lg" className="hero-button-vibrant">
                 VIEW UPCOMING EVENTS
               </Button>
-              <Button size="lg" className="bg-transparent border-3 border-secondary text-secondary hover:bg-secondary hover:text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-shake backdrop-blur-sm shadow-lg">
+              <Button size="lg" className="hero-button-outline-vibrant">
                 Learn About Us
               </Button>
             </div>
@@ -449,7 +449,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-20">
-            <Button variant="outline" size="lg" className="border-3 border-secondary text-secondary hover:bg-secondary hover:text-primary font-bold px-10 py-4 rounded-full transition-all duration-500 hover:scale-110 text-lg hover-float">
+            <Button variant="outline" size="lg" className="community-button-outline-vibrant">
               Learn About Our Social Work
             </Button>
           </div>

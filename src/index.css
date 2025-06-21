@@ -524,3 +524,122 @@ nav {
   border: 1px solid hsl(var(--border)) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
 }
+
+/* Enhanced Hero Section Button Styles for Light Mode */
+.hero-button-vibrant {
+  @apply px-8 py-4 text-lg font-semibold rounded-xl relative overflow-hidden;
+  background: linear-gradient(135deg, #EB6F46 0%, #A72218 50%, #E3C5B2 100%);
+  background-size: 200% 200%;
+  @apply text-white shadow-2xl;
+  box-shadow: 0 15px 35px rgba(235, 111, 70, 0.4), 0 5px 15px rgba(167, 34, 24, 0.3);
+  @apply transition-all duration-500 ease-out;
+  animation: gradient-shift 3s ease infinite;
+  border: 2px solid rgba(235, 111, 70, 0.3);
+}
+
+.hero-button-vibrant:hover {
+  @apply scale-110 -translate-y-3;
+  box-shadow: 0 25px 50px rgba(235, 111, 70, 0.6), 0 10px 25px rgba(167, 34, 24, 0.5);
+  animation: button-pulse 1s ease-in-out infinite, gradient-shift 1.5s ease infinite;
+  border-color: rgba(235, 111, 70, 0.8);
+}
+
+.hero-button-outline-vibrant {
+  @apply px-8 py-4 text-lg font-semibold rounded-xl relative overflow-hidden;
+  background: rgba(233, 231, 224, 0.95);
+  @apply border-3 backdrop-blur-sm;
+  border-color: #EB6F46;
+  color: #A72218;
+  @apply shadow-xl;
+  box-shadow: 0 15px 35px rgba(235, 111, 70, 0.25), inset 0 2px 4px rgba(167, 34, 24, 0.1);
+  @apply transition-all duration-500 ease-out;
+}
+
+.hero-button-outline-vibrant:hover {
+  @apply scale-105 -translate-y-2;
+  background: linear-gradient(135deg, rgba(235, 111, 70, 0.15) 0%, rgba(227, 197, 178, 0.25) 100%);
+  border-color: #A72218;
+  color: #A72218;
+  box-shadow: 0 20px 40px rgba(235, 111, 70, 0.4), inset 0 2px 4px rgba(167, 34, 24, 0.2);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Community Impact Section Button Styles */
+.community-button-vibrant {
+  @apply px-10 py-4 text-lg font-semibold rounded-full relative overflow-hidden;
+  background: linear-gradient(135deg, #A72218 0%, #EB6F46 100%);
+  @apply text-white shadow-xl;
+  box-shadow: 0 12px 30px rgba(167, 34, 24, 0.4), 0 5px 15px rgba(235, 111, 70, 0.3);
+  @apply transition-all duration-500 ease-out;
+  border: 2px solid rgba(167, 34, 24, 0.3);
+}
+
+.community-button-vibrant:hover {
+  @apply scale-110 -translate-y-2;
+  box-shadow: 0 20px 40px rgba(167, 34, 24, 0.6), 0 10px 25px rgba(235, 111, 70, 0.5);
+  transform: perspective(1000px) rotateX(-5deg) translateY(-8px) scale(1.1);
+  border-color: rgba(167, 34, 24, 0.8);
+}
+
+.community-button-outline-vibrant {
+  @apply px-10 py-4 text-lg font-semibold rounded-full relative overflow-hidden;
+  background: rgba(233, 231, 224, 0.9);
+  @apply border-3;
+  border-color: rgba(233, 231, 224, 0.8);
+  color: #A72218;
+  @apply shadow-lg;
+  box-shadow: 0 12px 30px rgba(233, 231, 224, 0.4), inset 0 2px 4px rgba(167, 34, 24, 0.1);
+  @apply transition-all duration-500 ease-out;
+}
+
+.community-button-outline-vibrant:hover {
+  @apply scale-110 -translate-y-2;
+  background: linear-gradient(135deg, rgba(235, 111, 70, 0.1) 0%, rgba(227, 197, 178, 0.2) 100%);
+  border-color: #EB6F46;
+  color: #A72218;
+  box-shadow: 0 20px 40px rgba(235, 111, 70, 0.4), inset 0 2px 4px rgba(167, 34, 24, 0.2);
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+/* Light mode specific enhancements for vibrant buttons */
+@media (prefers-color-scheme: light) {
+  .hero-button-vibrant,
+  .community-button-vibrant {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero-button-outline-vibrant,
+  .community-button-outline-vibrant {
+    backdrop-filter: blur(8px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Enhanced gradient animation for vibrant buttons */
+@keyframes vibrant-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-button-vibrant {
+  animation: vibrant-gradient-shift 4s ease infinite, pulse-glow 3s ease-in-out infinite;
+}
+
+/* Shimmer effect for vibrant buttons */
+.hero-button-vibrant::before,
+.community-button-vibrant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-button-vibrant:hover::before,
+.community-button-vibrant:hover::before {
+  left: 100%;
+}
