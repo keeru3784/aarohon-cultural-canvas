@@ -275,6 +275,29 @@
   50% { transform: translateY(-5px) scale(1.05); }
 }
 
+/* Button Enhancement Keyframes */
+@keyframes button-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px hsl(var(--primary) / 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -323,6 +346,10 @@
   animation: nav-item-bounce 0.3s ease-out;
 }
 
+.animate-button-pulse {
+  animation: button-pulse 2s ease-in-out infinite;
+}
+
 /* Dark mode specific enhancements */
 .dark .cultural-gradient {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 50%, hsl(var(--accent)) 100%);
@@ -362,28 +389,204 @@
   animation: shake 0.5s ease-in-out;
 }
 
-/* Enhanced button styles for better visibility */
+/* Enhanced button styles for better visibility and appeal */
 .hero-button {
-  @apply px-8 py-4 text-lg font-semibold rounded-xl;
-  @apply bg-gradient-to-r from-primary to-bengali-gold;
-  @apply text-white shadow-lg shadow-primary/25;
-  @apply transition-all duration-300 ease-out;
-  @apply hover:shadow-xl hover:shadow-primary/40;
-  @apply hover:scale-105 hover:-translate-y-1;
-  @apply border-2 border-transparent;
+  @apply px-8 py-4 text-lg font-semibold rounded-xl relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 50%, hsl(var(--bengali-orange)) 100%);
+  background-size: 200% 200%;
+  @apply text-white shadow-2xl;
+  box-shadow: 0 10px 30px hsl(var(--primary) / 0.4), 0 0 0 1px hsl(var(--bengali-gold) / 0.3);
+  @apply transition-all duration-500 ease-out;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.hero-button:hover {
+  @apply scale-110 -translate-y-2;
+  box-shadow: 0 20px 40px hsl(var(--primary) / 0.6), 0 0 0 2px hsl(var(--bengali-gold) / 0.5);
+  animation: button-pulse 1s ease-in-out infinite, gradient-shift 1.5s ease infinite;
+}
+
+.hero-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.hero-button:hover:before {
+  left: 100%;
 }
 
 .hero-button-outline {
-  @apply px-8 py-4 text-lg font-semibold rounded-xl;
-  @apply bg-transparent border-2 border-white/80;
-  @apply text-white backdrop-blur-sm;
-  @apply transition-all duration-300 ease-out;
-  @apply hover:bg-white/10 hover:border-white;
-  @apply hover:scale-105 hover:-translate-y-1;
-  @apply hover:shadow-lg hover:shadow-white/25;
+  @apply px-8 py-4 text-lg font-semibold rounded-xl relative overflow-hidden;
+  @apply bg-transparent border-2 backdrop-blur-sm;
+  border-color: hsl(var(--bengali-gold) / 0.8);
+  color: hsl(var(--bengali-gold));
+  @apply shadow-lg;
+  box-shadow: 0 8px 25px hsl(var(--bengali-gold) / 0.2), inset 0 1px 0 hsl(var(--bengali-gold) / 0.1);
+  @apply transition-all duration-500 ease-out;
+}
+
+.hero-button-outline:hover {
+  @apply scale-105 -translate-y-1;
+  background: linear-gradient(135deg, hsl(var(--bengali-gold) / 0.1) 0%, hsl(var(--primary) / 0.1) 100%);
+  border-color: hsl(var(--bengali-gold));
+  color: hsl(var(--bengali-gold));
+  box-shadow: 0 15px 35px hsl(var(--bengali-gold) / 0.4), inset 0 1px 0 hsl(var(--bengali-gold) / 0.2);
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
 .dark .hero-button-outline {
-  @apply border-bengali-gold/60 text-bengali-gold;
-  @apply hover:bg-bengali-gold/10 hover:border-bengali-gold;
+  border-color: hsl(var(--bengali-gold) / 0.6);
+  color: hsl(var(--bengali-gold));
+  box-shadow: 0 8px 25px hsl(var(--bengali-gold) / 0.15), inset 0 1px 0 hsl(var(--bengali-gold) / 0.1);
+}
+
+.dark .hero-button-outline:hover {
+  background: linear-gradient(135deg, hsl(var(--bengali-gold) / 0.15) 0%, hsl(var(--primary) / 0.15) 100%);
+  border-color: hsl(var(--bengali-gold));
+  box-shadow: 0 15px 35px hsl(var(--bengali-gold) / 0.3), inset 0 1px 0 hsl(var(--bengali-gold) / 0.2);
+}
+
+/* Enhanced primary buttons */
+.btn-primary-enhanced {
+  @apply px-6 py-3 font-semibold rounded-lg relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 100%);
+  @apply text-white shadow-xl;
+  box-shadow: 0 8px 25px hsl(var(--primary) / 0.3), 0 0 0 1px hsl(var(--bengali-gold) / 0.2);
+  @apply transition-all duration-300 ease-out;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+.btn-primary-enhanced:hover {
+  @apply scale-105 -translate-y-1;
+  box-shadow: 0 15px 35px hsl(var(--primary) / 0.5), 0 0 0 2px hsl(var(--bengali-gold) / 0.4);
+  transform: perspective(1000px) rotateX(-5deg) translateY(-2px);
+}
+
+/* Enhanced secondary buttons */
+.btn-secondary-enhanced {
+  @apply px-6 py-3 font-semibold rounded-lg relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--bengali-cream)) 100%);
+  color: hsl(var(--primary));
+  @apply shadow-lg;
+  box-shadow: 0 6px 20px hsl(var(--secondary) / 0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+  @apply transition-all duration-300 ease-out;
+}
+
+.btn-secondary-enhanced:hover {
+  @apply scale-105 -translate-y-1;
+  box-shadow: 0 12px 30px hsl(var(--secondary) / 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  background: linear-gradient(135deg, hsl(var(--bengali-cream)) 0%, hsl(var(--secondary)) 100%);
+}
+
+/* Enhanced outline buttons */
+.btn-outline-enhanced {
+  @apply px-6 py-3 font-semibold rounded-lg relative overflow-hidden;
+  @apply bg-transparent border-2;
+  border-color: hsl(var(--primary) / 0.8);
+  color: hsl(var(--primary));
+  @apply shadow-md;
+  box-shadow: 0 4px 15px hsl(var(--primary) / 0.1), inset 0 1px 0 hsl(var(--primary) / 0.1);
+  @apply transition-all duration-300 ease-out;
+}
+
+.btn-outline-enhanced:hover {
+  @apply scale-105 -translate-y-1;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--bengali-gold) / 0.1) 100%);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 10px 25px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(var(--primary) / 0.2);
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+/* Destructive button enhancement */
+.btn-destructive-enhanced {
+  @apply px-6 py-3 font-semibold rounded-lg relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--destructive)) 0%, #dc2626 100%);
+  @apply text-white shadow-xl;
+  box-shadow: 0 8px 25px hsl(var(--destructive) / 0.3);
+  @apply transition-all duration-300 ease-out;
+}
+
+.btn-destructive-enhanced:hover {
+  @apply scale-105 -translate-y-1;
+  box-shadow: 0 15px 35px hsl(var(--destructive) / 0.5);
+  background: linear-gradient(135deg, #dc2626 0%, hsl(var(--destructive)) 100%);
+}
+
+/* Small button variants */
+.btn-sm-enhanced {
+  @apply px-4 py-2 text-sm font-medium rounded-md;
+}
+
+/* Large button variants */
+.btn-lg-enhanced {
+  @apply px-8 py-4 text-lg font-bold rounded-xl;
+}
+
+/* Icon button enhancement */
+.btn-icon-enhanced {
+  @apply w-10 h-10 rounded-lg flex items-center justify-center;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 100%);
+  @apply text-white shadow-lg;
+  box-shadow: 0 4px 15px hsl(var(--primary) / 0.3);
+  @apply transition-all duration-300 ease-out;
+}
+
+.btn-icon-enhanced:hover {
+  @apply scale-110 -translate-y-1;
+  box-shadow: 0 8px 25px hsl(var(--primary) / 0.5);
+  animation: button-pulse 1s ease-in-out infinite;
+}
+
+/* Apply enhanced styles to all button variants automatically */
+button[class*="bg-primary"], .bg-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--bengali-gold)) 100%) !important;
+  box-shadow: 0 8px 25px hsl(var(--primary) / 0.3) !important;
+  transition: all 0.3s ease-out !important;
+}
+
+button[class*="bg-primary"]:hover, .bg-primary:hover {
+  transform: scale(1.05) translateY(-2px) !important;
+  box-shadow: 0 15px 35px hsl(var(--primary) / 0.5) !important;
+}
+
+button[class*="variant-outline"], .variant-outline {
+  border-color: hsl(var(--primary) / 0.8) !important;
+  color: hsl(var(--primary)) !important;
+  box-shadow: 0 4px 15px hsl(var(--primary) / 0.1) !important;
+  transition: all 0.3s ease-out !important;
+}
+
+button[class*="variant-outline"]:hover, .variant-outline:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--bengali-gold) / 0.1) 100%) !important;
+  border-color: hsl(var(--primary)) !important;
+  transform: scale(1.05) translateY(-1px) !important;
+  box-shadow: 0 10px 25px hsl(var(--primary) / 0.3) !important;
+}
+
+button[class*="bg-secondary"], .bg-secondary {
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--bengali-cream)) 100%) !important;
+  box-shadow: 0 6px 20px hsl(var(--secondary) / 0.2) !important;
+  transition: all 0.3s ease-out !important;
+}
+
+button[class*="bg-secondary"]:hover, .bg-secondary:hover {
+  transform: scale(1.05) translateY(-1px) !important;
+  box-shadow: 0 12px 30px hsl(var(--secondary) / 0.4) !important;
+}
+
+/* Dark mode button enhancements */
+.dark button[class*="variant-outline"], .dark .variant-outline {
+  border-color: hsl(var(--bengali-gold) / 0.6) !important;
+  color: hsl(var(--bengali-gold)) !important;
+}
+
+.dark button[class*="variant-outline"]:hover, .dark .variant-outline:hover {
+  border-color: hsl(var(--bengali-gold)) !important;
+  background: linear-gradient(135deg, hsl(var(--bengali-gold) / 0.15) 0%, hsl(var(--primary) / 0.15) 100%) !important;
 }
